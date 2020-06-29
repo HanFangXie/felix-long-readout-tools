@@ -442,3 +442,9 @@ unsigned int PdspChannelMapService::getOfflineChannel(const dune::FelixFrame* fr
 
     return getOfflineChannel(crate, slot, fiber, ch);
 }
+
+// at sometimes I met this issue 
+// /dune/app/users/fxie/felix-long-readout-tools/felix-long-readout-tools.git/FrameFile.h:27:19: error: 'runtime_error' is not a member of 'std'
+//       throw std::runtime_error("File does not contain an integer number of frames");
+
+// to solve this, kick off std:: and add using namespace st; though "using namespace XXX" is not a very good idea. 

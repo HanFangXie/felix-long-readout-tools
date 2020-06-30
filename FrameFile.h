@@ -5,6 +5,8 @@
 #include <iostream>
 #include "FelixFormat.hh"
 
+#include <stdexcept>
+
 using namespace std;
 
 class FrameFile

@@ -5,6 +5,8 @@
 #include <iostream>
 #include "FelixFormat.hh"
 
+using namespace std;
+
 class FrameFile
 {
 public:
@@ -14,17 +16,17 @@ public:
           m_buffer(new char[sizeof(dune::FelixFrame)])
     {
         if(m_file.bad() || m_file.fail() || !m_file.is_open()){
-            throw std::runtime_error(std::string("Bad file ")+std::string(filename));
+            throw runtime_error(std::string("Bad file ")+std::string(filename));
         }
         // Calculate the length of the file
         m_file.seekg(0, m_file.end);
         m_length = m_file.tellg();
         m_file.seekg(0, m_file.beg);
         if(m_length==0){
-            throw std::runtime_error("Empty file");
+            throw runtime_error("Empty file");
         }
         if(m_length%sizeof(dune::FelixFrame)!=0){
-            throw std::runtime_error("File does not contain an integer number of frames");
+            throw runtime_error("File does not contain an integer number of frames");
         }
         m_n_frames=m_length/sizeof(dune::FelixFrame);
     }
